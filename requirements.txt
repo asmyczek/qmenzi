@@ -1,0 +1,5 @@
+workcloud
+requests
+bs4
+atlassian-python-api
+pyyaml

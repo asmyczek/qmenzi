@@ -1,0 +1,14 @@
+global:
+  ssl_verify: false
+
+confluence:
+  confluence_base_url: "https://<org>.atlassian.net/"
+  user_name: "<email address>"
+  auth_token: "<authentication token>" # https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/
+
+wordcloud:
+  wordcloud_max_words: 50
+  wordcloud_size_widht: 900
+  wordcloud_size_hight: 600
+  wordcloud_margin: 5
+  wordcloud_background_color: white

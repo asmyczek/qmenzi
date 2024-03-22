@@ -1,6 +1,9 @@
+import logging
 import matplotlib.pyplot as plot
 from wordcloud import WordCloud, STOPWORDS
 from qmenzi import config
+
+logger = logging.getLogger("qmenzi-wordcloud")
 
 WORDCLOUD_MAX_WORDS         = config('wordcloud.wordcloud_max_words') or 50
 WORDCLOUD_SIZE_WIDHT        = config('wordcloud.wordcloud_size_widht') or 900

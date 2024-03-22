@@ -4,6 +4,8 @@ from functools import reduce
 from qmenzi import config
 from qmenzi.utils import html2txt
 
+logger = logging.getLogger("qmenzi-confluence")
+
 CONFLUENCE_BASE_URL = config('confluence.confluence_base_url')
 USER_NAME = config('confluence.user_name')
 AUTH_TOKEN = config('confluence.auth_token')
@@ -36,10 +38,10 @@ def collect_content_for_page_ids(page_ids, min_words):
         if wc > min_words:
             return content, wc
         else:
-            logging.info(f'Fetching content for page id {page_id}.')
+            logger.info(f'Fetching content for page id {page_id}.')
             new_content = get_content_for_page_id(page_id)
             wc += len(new_content.split())
-            logging.info(f'Aggregated content length is {wc}.')
+            logger.info(f'Aggregated content length is {wc}.')
             return content + new_content, wc
     return reduce(collect, page_ids, ('', 0))[0]
 

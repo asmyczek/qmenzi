@@ -4,6 +4,8 @@ from functools import reduce
 from qmenzi import config
 from qmenzi.utils import html2txt
 
+logger = logging.getLogger("qmenzi-wikipedia")
+
 SSL_VERIFY = config('global.ssl_verify')
 WIKI_PARSE_QUERY = 'https://en.wikipedia.org/w/api.php?action=parse&format=json&page={page_name}&{params}'
 
@@ -43,9 +45,9 @@ def remove_cite_errors(html_string):
 
 def get_page_section_by_section_name(page_name, section_name):
     sections = get_page_section_ids(page_name)
-    logging.info(f'Fetched {len(sections)} sections from {page_name}.')
+    logger.info(f'Fetched {len(sections)} sections from {page_name}.')
     section_id = sections.get(section_name)
-    logging.info(f'{section_name} section id is {section_id}.')
+    logger.info(f'{section_name} section id is {section_id}.')
     if section_id:
         sresp = get_page_section_by_section_id(page_name, section_id)
         content = html2txt(sresp['parse']['text']['*'])

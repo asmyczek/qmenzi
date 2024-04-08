@@ -40,6 +40,11 @@ def filter_frequencies(frequencies, filter_words):
     return frequencies
 
 
+def get_frequencies_for_content(content, filter_words=[], save_to_file=None, dpi=600):
+    wordcloud = generate_wordcloud()
+    return filter_frequencies(wordcloud.process_text(content), filter_words)
+
+
 def create_wordcloud_for_content(content, filter_words=[], save_to_file=None, dpi=600):
     wordcloud = generate_wordcloud()
     frequencies = filter_frequencies(wordcloud.process_text(content), filter_words)

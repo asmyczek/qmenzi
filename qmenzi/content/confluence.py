@@ -9,6 +9,7 @@ logger = logging.getLogger("qmenzi-confluence")
 CONFLUENCE_BASE_URL = config('confluence.confluence_base_url')
 USER_NAME = config('confluence.user_name')
 AUTH_TOKEN = config('confluence.auth_token')
+SSL_VERIFY = config('global.ssl_verify')
 
 
 class Client(object):
@@ -18,7 +19,8 @@ class Client(object):
             cls.instance.confluence = Confluence(url=CONFLUENCE_BASE_URL,
                                                  username=USER_NAME,
                                                  password=AUTH_TOKEN,
-                                                 cloud=True)
+                                                 cloud=True,
+                                                 verify_ssl=SSL_VERIFY)
         return cls.instance
 
 

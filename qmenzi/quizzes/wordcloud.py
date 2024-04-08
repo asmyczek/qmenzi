@@ -24,20 +24,12 @@ def generate_wordcloud():
     return wordcloud
 
 
-def generate_stopwords_wordcloud(content):
-    # TODO: generate wordcloud for stopwards
-    pass
-
-
 def filter_frequencies(frequencies, filter_words):
-    if len(filter_words) > 0:
-        def filter(r, item):
-            k, v = item
-            if k not in filter_words:
-                r[k] = v
-            return r
-        return reduce(filter, frequencies.items(), {})
-    return frequencies
+    # TODO: move to stopwords
+    def filter(d, item):
+        del d[item]
+        return d
+    return reduce(filter, filter_words, frequencies)
 
 
 def get_frequencies_for_content(content, filter_words=[], save_to_file=None, dpi=600):

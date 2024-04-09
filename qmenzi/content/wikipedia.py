@@ -1,6 +1,5 @@
 import logging
 import requests
-from functools import reduce
 from qmenzi import config
 from qmenzi.utils import html2txt
 
@@ -24,10 +23,7 @@ def get_page_section_ids(page_name):
         WIKI_PARSE_QUERY.format(
             page_name=page_name,
             params='prop=sections&disabletoc=1'))
-    def add_section(scs, s):
-        scs[s['line'].replace(' ', '_')] = s['index']
-        return scs
-    return reduce(add_section, resp['parse']['sections'], {})
+    return {s['line'].replace(' ', '_'): s['index'] for s in resp['parse']['sections']}
 
 
 def get_page_section_by_section_id(page_name, section_id):

@@ -1,7 +1,6 @@
 import logging
 import matplotlib.pyplot as plot
 from wordcloud import WordCloud, STOPWORDS
-from functools import reduce
 from qmenzi import config
 
 logger = logging.getLogger("qmenzi-wordcloud")
@@ -25,16 +24,14 @@ def generate_wordcloud():
 
 
 def filter_frequencies(frequencies, filter_words):
-    # TODO: move to stopwords
-    def filter(d, item):
-        del d[item]
-        return d
-    return reduce(filter, filter_words, frequencies)
+    # TODO: move the logic to stopwords
+    return {k: v for k, v in frequencies.items() if k not in filter_words}
 
 
-def get_frequencies_for_content(content, filter_words=[], save_to_file=None, dpi=600):
+def get_frequencies_for_content(content, filter_words=[], top_n_results=None):
     wordcloud = generate_wordcloud()
-    return filter_frequencies(wordcloud.process_text(content), filter_words)
+    frequencies = filter_frequencies(wordcloud.process_text(content), filter_words)
+    return sorted(frequencies.items(), key=lambda i: i[1], reverse=True)[:top_n_results if top_n_results else len(frequencies.keys())]
 
 
 def create_wordcloud_for_content(content, filter_words=[], save_to_file=None, dpi=600):

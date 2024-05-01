@@ -34,7 +34,7 @@ def get_content_for_page_id(page_id):
     return html2txt(content)
     
 
-def collect_content_for_page_ids(page_ids, min_words):
+def collect_content_for_page_ids(page_ids, min_words, min_content_length):
     def collect(agg,  page_id):
         content, wc = agg
         if wc > min_words:
@@ -42,12 +42,15 @@ def collect_content_for_page_ids(page_ids, min_words):
         else:
             logger.info(f'Fetching content for page id {page_id}.')
             new_content = get_content_for_page_id(page_id)
-            wc += len(new_content.split())
-            logger.info(f'Aggregated content length is {wc}.')
-            return content + new_content, wc
+            if len(new_content) < min_content_length:
+                return content, wc
+            else:
+                wc += len(new_content.split())
+                logger.info(f'Aggregated content length is {wc}.')
+                return f'{content}\n{new_content}', wc
     return reduce(collect, page_ids, ('', 0))[0]
 
 
-def scrap_content_for_user_id(user_id, min_words=500):
+def scrap_content_for_user_id(user_id, min_words=5000, min_content_length=50):
     page_ids = list_page_ids_by_owner(user_id)
-    return collect_content_for_page_ids(page_ids, min_words)
+    return collect_content_for_page_ids(page_ids, min_words, min_content_length)

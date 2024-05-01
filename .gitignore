@@ -164,3 +164,4 @@ config_adam.yaml
 .DS_Store
 .python-version
 ideogram_images
+cache

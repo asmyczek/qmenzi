@@ -1,5 +1,6 @@
 global:
   ssl_verify: false
+  cache_folder: "cache"
 
 confluence:
   confluence_base_url: "https://<org>.atlassian.net/"
@@ -16,5 +17,5 @@ wordcloud:
 ideogram:
   session_cookie: "Session cookie from your browser" # see https://github.com/flowese/IdeogramWrapper?tab=readme-ov-file#obtaining-the-session-token
   aspect_ratio: "square" # landscape/portrait/square
-  output_folder: "images"
+  output_folder: "ideogram_images"
   enable_logging: yes

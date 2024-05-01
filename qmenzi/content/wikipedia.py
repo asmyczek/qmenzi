@@ -1,7 +1,7 @@
 import logging
 import requests
 from qmenzi import config
-from qmenzi.utils import html2txt
+from qmenzi.content.utils import html2txt
 
 logger = logging.getLogger("qmenzi-wikipedia")
 

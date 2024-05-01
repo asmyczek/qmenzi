@@ -2,7 +2,7 @@ import logging
 from atlassian import Confluence
 from functools import reduce
 from qmenzi import config
-from qmenzi.utils import html2txt
+from qmenzi.content.utils import html2txt
 
 logger = logging.getLogger("qmenzi-confluence")
 

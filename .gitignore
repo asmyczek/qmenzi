@@ -165,3 +165,4 @@ config_adam.yaml
 .python-version
 ideogram_images
 cache
+models

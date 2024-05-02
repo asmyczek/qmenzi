@@ -1,8 +1,12 @@
 import os
+import logging
 from bs4 import BeautifulSoup
 from qmenzi import config
 
+logger = logging.getLogger("qmenzi-content-utils")
+
 CACHE_FOLDER = config('global.cache_folder')
+
 
 def html2txt(html_str):
     soup = BeautifulSoup(html_str, 'html.parser')    

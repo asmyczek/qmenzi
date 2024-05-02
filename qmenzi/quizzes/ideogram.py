@@ -10,6 +10,7 @@ from time import sleep
 from datetime import datetime, timedelta
 from qmenzi import config
 
+logger = logging.getLogger("qmenzi-quizzes-ideogram")
 
 SSL_VERIFY = config('global.ssl_verify')
 SESSION_COOKIE = config('ideogram.session_cookie')

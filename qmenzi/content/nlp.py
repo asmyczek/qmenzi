@@ -1,3 +1,4 @@
+import logging
 import nltk
 import spacy
 from spacy.lang.en import English
@@ -10,6 +11,8 @@ nltk.download('wordnet')
 nltk.download('stopwords')
 nltk.download('vader_lexicon')
 spacy.load('models/en_core_web_sm-3.7.1/en_core_web_sm/en_core_web_sm-3.7.1/')
+
+logger = logging.getLogger("qmenzi-nlp")
 
 EN_PARSER = English()
 EN_STOP = set(nltk.corpus.stopwords.words('english'))

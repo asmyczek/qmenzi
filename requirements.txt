@@ -3,4 +3,9 @@ requests
 bs4
 atlassian-python-api
 pyyaml
-ideogram_wrapper
+numpy
+scipy
+gensim
+nltk
+spacy
+pyLDAvis

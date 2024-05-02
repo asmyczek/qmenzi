@@ -1,5 +1,8 @@
 import os
+from qmenzi import config
 
+AUTH_TOKEN = config('replicate.api_token')
 
 def authenticate():
-    os.environ['REPLICATE_API_TOKEN'] = 'r8_6qsAqmXhbYSH8QNAEtR4fe3gpwy0u9G17IqY7'
+    os.environ['REPLICATE_API_TOKEN'] = AUTH_TOKEN
+

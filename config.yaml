@@ -19,3 +19,6 @@ ideogram:
   aspect_ratio: "square" # landscape/portrait/square
   output_folder: "ideogram_images"
   enable_logging: yes
+
+replicate:
+  api_token: "<authentication token>"

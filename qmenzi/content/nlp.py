@@ -10,7 +10,7 @@ from gensim import corpora
 nltk.download('wordnet')
 nltk.download('stopwords')
 nltk.download('vader_lexicon')
-spacy.load('models/en_core_web_sm-3.7.1/en_core_web_sm/en_core_web_sm-3.7.1/')
+spacy.load('en_core_web_sm')
 
 logger = logging.getLogger("qmenzi-nlp")
 

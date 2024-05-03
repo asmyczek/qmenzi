@@ -14,11 +14,5 @@ wordcloud:
   wordcloud_margin: 5
   wordcloud_background_color: white
 
-ideogram:
-  session_cookie: "Session cookie from your browser" # see https://github.com/flowese/IdeogramWrapper?tab=readme-ov-file#obtaining-the-session-token
-  aspect_ratio: "square" # landscape/portrait/square
-  output_folder: "ideogram_images"
-  enable_logging: yes
-
 replicate:
   api_token: "<authentication token>"
